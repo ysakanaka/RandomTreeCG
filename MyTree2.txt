@@ -1,0 +1,483 @@
+import com.jogamp.opengl.GL2;
+import com.jogamp.opengl.GLAutoDrawable;
+import com.jogamp.opengl.util.gl2.GLUT;
+import java.util.ArrayList;
+import java.util.Random;
+
+class Leaf {
+  private double posx;
+  private double posy;
+  private double posz;
+  private double diameter;
+  private double hue;
+  //private float color[];
+  //private float silver[];
+  private float color[] = { 0.5f, 0.5f, 0.5f, 1.0f };
+	private float silver[] = { 0.5f, 0.5f, 0.5f, 1.0f };
+
+  //private Branch parent;
+
+  Random r = new Random();
+
+  Leaf(double _x, double _y, double _z) {
+    this.posx = _x;
+    this.posy = _y;
+    this.posz = _z;
+    this.diameter = 1.0 + r.nextDouble();
+    this.hue = 1.0 + r.nextDouble();
+  }
+
+  void display(GLAutoDrawable drawable) {
+    GL2 gl = drawable.getGL().getGL2();
+    GLUT glut = new GLUT();
+    gl.glMaterialfv(GL2.GL_FRONT_AND_BACK, GL2.GL_AMBIENT_AND_DIFFUSE, color, 0);
+		gl.glMaterialfv(GL2.GL_FRONT_AND_BACK, GL2.GL_SPECULAR, silver, 0);
+    //need translation
+
+    glut.glutSolidSphere(0.1, 30, 20);
+  }
+}
+
+class Branch {
+  private double start[] = {0.0, 0.0, 0.0};
+  private double end[] = {0.0, 0.0, 0.0};
+  private double thick;
+  private Branch parent = null;
+  private int level;
+  float color[] = { 139.0f/255.0f, 69.0f/255.0f, 19.0f/255.0f, 1.0f };
+	float silver[] = { 139.0f/255.0f, 69.0f/255.0f, 19.0f/255.0f, 1.0f };
+
+  float color2[] = { 57.0f/255.0f, 25.0f/255.0f, 9.0f/255.0f, 1.0f };
+	float silver2[] = { 57.0f/255.0f, 25.0f/255.0f, 9.0f/255.0f, 1.0f };
+
+  // Positions of vertices
+	double vertex1[][] = {
+		  { -0.5, 0.0,  0.0 },
+		  {  0.5, 0.0,  0.0 },
+		  {  0.5, 0.25, 0.0 },
+		  { -0.5, 0.25, 0.0 },
+		  { -0.5, 0.0,  0.5 },
+		  {  0.5, 0.0,  0.5 },
+		  {  0.5, 0.25, 0.5 },
+		  { -0.5, 0.25, 0.5 }
+	};
+
+	// Positions of vertices
+	double vertex2[][] = {
+		  { -0.3, 0.0, -0.25 },
+		  {  0.3, 0.0, -0.25 },
+		  {  0.2, 2.5, -0.25 },
+		  { -0.2, 2.5, -0.25 },
+		  { -0.3, 0.0, 0.45 },
+		  {  0.3, 0.0, 0.45 },
+		  {  0.2, 2.5, 0.45 },
+		  { -0.2, 2.5, 0.45 }
+	};
+
+	// IDs of vertices of faces
+	int face[][] = {
+		  { 0, 3, 2, 1 },
+		  { 1, 2, 6, 5 },
+		  { 5, 6, 7, 4 },
+		  { 4, 7, 3, 0 },
+		  { 4, 0, 1, 5 },
+		  { 3, 7, 6, 2 }
+	};
+
+	// Normal vector of vertices
+	double normal[][] = {
+		  { 0.0, 0.0, 1.0 },
+		  {-1.0, 0.0, 0.0 },
+		  { 0.0, 0.0,-1.0 },
+		  { 1.0, 0.0, 0.0 },
+		  { 0.0, 1.0, 0.0 },
+		  { 0.0,-1.0, 0.0 }
+	};
+
+  Branch(double v[][], int f[][], double n[][], int lv) {
+    for (int j = 0; j < 6 ; ++j ) {
+      for (int i = 0; i < 4  ; ++i ) {
+        face[j][i] = f[j][i];
+      }
+    }
+
+    for (int j = 0; j < 6 ; ++j ) {
+      for (int i = 0; i < 3  ; ++i ) {
+        normal[j][i] = n[j][i];
+      }
+    }
+
+    for (int j = 0; j < 8 ; ++j ) {
+      for (int i = 0; i < 3 ; ++i ) {
+        vertex2[j][i] = v[j][i];
+      }
+    }
+
+    level = lv;
+  }
+  public double[][] getVertex() {
+    return vertex2;
+  }
+
+  public int[][] getFace() {
+    return face;
+  }
+
+  public double[][] getNormal() {
+    return normal;
+  }
+
+  public int getLevel() {
+    return level;
+  }
+
+  void display(GLAutoDrawable drawable) {
+    GL2 gl = drawable.getGL().getGL2();
+    GLUT glut = new GLUT();
+
+    gl.glMaterialfv(GL2.GL_FRONT_AND_BACK, GL2.GL_AMBIENT_AND_DIFFUSE, color2, 0);
+		gl.glMaterialfv(GL2.GL_FRONT_AND_BACK, GL2.GL_SPECULAR, silver2, 0);
+
+    for (int j = 0; j < 6; ++j) {
+			gl.glBegin(GL2.GL_POLYGON);
+			gl.glNormal3dv(normal[j], 0);
+			for (int i = 0; i < 4; ++i) {
+				gl.glVertex3dv(vertex2[face[j][i]], 0);
+			}
+			gl.glEnd();
+		}
+  }
+}
+
+public class MyTree2 {
+  static Branch branch = null;
+  static int tree_level = 3;
+  // Positions of vertices
+	static double v[][] = {
+		  { -0.3, 0.0, -0.25 },
+		  {  0.3, 0.0, -0.25 },
+		  {  0.2, 2.5, -0.25 },
+		  { -0.2, 2.5, -0.25 },
+		  { -0.3, 0.0, 0.45 },
+		  {  0.3, 0.0, 0.45 },
+		  {  0.2, 2.5, 0.45 },
+		  { -0.2, 2.5, 0.45 }
+	};
+
+	// IDs of vertices of faces
+	static int f[][] = {
+		  { 0, 3, 2, 1 },
+		  { 1, 2, 6, 5 },
+		  { 5, 6, 7, 4 },
+		  { 4, 7, 3, 0 },
+		  { 4, 0, 1, 5 },
+		  { 3, 7, 6, 2 }
+	};
+
+	// Normal vector of vertices
+	static double n[][] = {
+		  { 0.0, 0.0, 1.0 },
+		  {-1.0, 0.0, 0.0 },
+		  { 0.0, 0.0,-1.0 },
+		  { 1.0, 0.0, 0.0 },
+		  { 0.0, 1.0, 0.0 },
+		  { 0.0,-1.0, 0.0 }
+	};
+  static Random r = new Random();
+  public static void init() {
+    branch = new Branch(v, f, n, 0);
+    subDivide(branch);
+  }
+
+  static ArrayList<Branch> branches = new ArrayList<Branch>();
+
+  static public void addBranche(Branch b) {
+    branches.add(b);
+  }
+
+  static double[][] reduct(double[][] original_v) {
+    double reducted_v[][] = {
+      { -0.3, 0.0, -0.25 },
+      {  0.3, 0.0, -0.25 },
+      {  0.2, 2.5, -0.25 },
+      { -0.2, 2.5, -0.25 },
+      { -0.3, 0.0, 0.45 },
+      {  0.3, 0.0, 0.45 },
+      {  0.2, 2.5, 0.45 },
+      { -0.2, 2.5, 0.45 }
+    };
+    for (int j = 0; j < 8 ; ++j ) {
+      for (int i = 0; i < 3 ; ++i ) {
+        reducted_v[j][i] = 0.9 * original_v[j][i];
+      }
+    }
+    return reducted_v;
+  }
+
+  static void subDivide(Branch parent) {
+    ArrayList<Branch> newBranches = new ArrayList<Branch>();
+    int newBranchAxis = r.nextInt(2);
+    //int newBranchAxis = 2;
+    int p_level = parent.getLevel();
+System.out.println(newBranchAxis);
+
+
+    // Positions of vertices
+  	double v2[][] = {
+  		  { -0.3, 0.0, -0.25 },
+  		  {  0.3, 0.0, -0.25 },
+  		  {  0.2, 2.5, -0.25 },
+  		  { -0.2, 2.5, -0.25 },
+  		  { -0.3, 0.0, 0.45 },
+  		  {  0.3, 0.0, 0.45 },
+  		  {  0.2, 2.5, 0.45 },
+  		  { -0.2, 2.5, 0.45 }
+  	};
+
+    double v3[][] = {
+  		  { -0.3, 0.0, -0.25 },
+  		  {  0.3, 0.0, -0.25 },
+  		  {  0.2, 2.5, -0.25 },
+  		  { -0.2, 2.5, -0.25 },
+  		  { -0.3, 0.0, 0.45 },
+  		  {  0.3, 0.0, 0.45 },
+  		  {  0.2, 2.5, 0.45 },
+  		  { -0.2, 2.5, 0.45 }
+  	};
+
+    double v4[][] = {
+  		  { -0.3, 0.0, -0.25 },
+  		  {  0.3, 0.0, -0.25 },
+  		  {  0.2, 2.5, -0.25 },
+  		  { -0.2, 2.5, -0.25 },
+  		  { -0.3, 0.0, 0.45 },
+  		  {  0.3, 0.0, 0.45 },
+  		  {  0.2, 2.5, 0.45 },
+  		  { -0.2, 2.5, 0.45 }
+  	};
+
+    double v5[][] = {
+  		  { -0.3, 0.0, -0.25 },
+  		  {  0.3, 0.0, -0.25 },
+  		  {  0.2, 2.5, -0.25 },
+  		  { -0.2, 2.5, -0.25 },
+  		  { -0.3, 0.0, 0.45 },
+  		  {  0.3, 0.0, 0.45 },
+  		  {  0.2, 2.5, 0.45 },
+  		  { -0.2, 2.5, 0.45 }
+  	};
+
+  	// IDs of vertices of faces
+  	int f2[][] = {
+  		  { 0, 3, 2, 1 },
+  		  { 1, 2, 6, 5 },
+  		  { 5, 6, 7, 4 },
+  		  { 4, 7, 3, 0 },
+  		  { 4, 0, 1, 5 },
+  		  { 3, 7, 6, 2 }
+  	};
+
+  	// Normal vector of vertices
+  	double n2[][] = {
+  		  { 0.0, 0.0, 1.0 },
+  		  {-1.0, 0.0, 0.0 },
+  		  { 0.0, 0.0,-1.0 },
+  		  { 1.0, 0.0, 0.0 },
+  		  { 0.0, 1.0, 0.0 },
+  		  { 0.0,-1.0, 0.0 }
+  	};
+
+    double p_vertex[][] = parent.getVertex();
+
+    for (int j = 0; j < 8 ; ++j ) {
+      for (int i = 0; i < 3 ; ++i ) {
+        v2[j][i] = p_vertex[j][i];
+      }
+    }
+
+    for (int j = 0; j < 8 ; ++j ) {
+      for (int i = 0; i < 3 ; ++i ) {
+        v3[j][i] = p_vertex[j][i];
+      }
+    }
+
+    for (int j = 0; j < 8 ; ++j ) {
+      for (int i = 0; i < 3 ; ++i ) {
+        v4[j][i] = p_vertex[j][i];
+      }
+    }
+
+    for (int j = 0; j < 8 ; ++j ) {
+      for (int i = 0; i < 3 ; ++i ) {
+        v5[j][i] = p_vertex[j][i];
+      }
+    }
+
+    v2[0][1] = (p_vertex[0][1] + p_vertex[2][1])/2;
+    v2[1][1] = (p_vertex[1][1] + p_vertex[3][1])/2;
+    v2[4][1] = (p_vertex[4][1] + p_vertex[6][1])/2;
+    v2[5][1] = (p_vertex[5][1] + p_vertex[7][1])/2;
+
+    v2[2][1] = p_vertex[2][1] + 2.0;
+    v2[3][1] = p_vertex[2][1] + 2.0;
+    v2[6][1] = p_vertex[2][1] + 2.0;
+    v2[7][1] = p_vertex[2][1] + 2.0;
+
+    v2[0][0] = p_vertex[2][0];
+    v2[1][0] = p_vertex[3][0];
+    v2[2][0] = (0.2 * p_vertex[2][0]) + 1.0;
+    v2[3][0] = (0.2 * p_vertex[3][0]) + 1.0;
+    v2[4][0] = p_vertex[6][0];
+    v2[5][0] = p_vertex[7][0];
+    v2[6][0] = (0.2 * p_vertex[6][0]) + 1.0;
+    v2[7][0] = (0.2 * p_vertex[7][0]) + 1.0;
+
+
+    v3[0][1] = p_vertex[2][1] - 0.1;
+    v3[1][1] = p_vertex[3][1] - 0.1;
+    v3[4][1] = p_vertex[6][1] - 0.1;
+    v3[5][1] = p_vertex[7][1] - 0.1;
+
+    v3[2][1] = p_vertex[2][1] + 1.2;
+    v3[3][1] = p_vertex[2][1] + 1.2;
+    v3[6][1] = p_vertex[2][1] + 1.2;
+    v3[7][1] = p_vertex[2][1] + 1.2;
+
+    v3[0][0] = p_vertex[2][0];
+    v3[1][0] = p_vertex[3][0];
+    v3[2][0] = (0.5 * p_vertex[2][0]) - 2.5;
+    v3[3][0] = (0.5 * p_vertex[3][0]) - 2.5;
+    v3[4][0] = p_vertex[6][0];
+    v3[5][0] = p_vertex[7][0];
+    v3[6][0] = (0.5 * p_vertex[6][0]) - 2.5;
+    v3[7][0] = (0.5 * p_vertex[7][0]) - 2.5;
+
+
+    v4[0][1] = p_vertex[2][1] - 0.1;
+    v4[1][1] = p_vertex[3][1] - 0.1;
+    v4[4][1] = p_vertex[6][1] - 0.1;
+    v4[5][1] = p_vertex[7][1] - 0.1;
+
+    v4[2][1] = p_vertex[2][1] + 2.0;
+    v4[3][1] = p_vertex[2][1] + 2.0;
+    v4[6][1] = p_vertex[2][1] + 2.0;
+    v4[7][1] = p_vertex[2][1] + 2.0;
+
+    v4[0][0] = p_vertex[2][0];
+    v4[1][0] = p_vertex[3][0];
+    v4[2][0] = (0.5 * p_vertex[2][0]) + 1.5;
+    v4[3][0] = (0.5 * p_vertex[3][0]) + 1.5;
+    v4[4][0] = p_vertex[6][0];
+    v4[5][0] = p_vertex[7][0];
+    v4[6][0] = (0.5 * p_vertex[6][0]) + 1.5;
+    v4[7][0] = (0.5 * p_vertex[7][0]) + 1.5;
+
+    v4[0][2] = p_vertex[2][2];
+    v4[1][2] = p_vertex[3][2];
+    v4[2][2] = p_vertex[2][2] + 1.8;
+    v4[3][2] = p_vertex[3][2] + 1.8;
+    v4[4][2] = p_vertex[6][2];
+    v4[5][2] = p_vertex[7][2];
+    v4[6][2] = p_vertex[6][2] + 1.8;
+    v4[7][2] = p_vertex[7][2] + 1.8;
+
+    v5[0][1] = p_vertex[2][1] - 0.1;
+    v5[1][1] = p_vertex[3][1] - 0.1;
+    v5[4][1] = p_vertex[6][1] - 0.1;
+    v5[5][1] = p_vertex[7][1] - 0.1;
+
+    v5[2][1] = p_vertex[2][1] + 0.7;
+    v5[3][1] = p_vertex[2][1] + 0.7;
+    v5[6][1] = p_vertex[2][1] + 0.7;
+    v5[7][1] = p_vertex[2][1] + 0.7;
+
+    v5[0][0] = p_vertex[2][0];
+    v5[1][0] = p_vertex[3][0];
+    v5[2][0] = (0.5 * p_vertex[2][0]) - 0.5;
+    v5[3][0] = (0.5 * p_vertex[3][0]) - 0.5;
+    v5[4][0] = p_vertex[6][0];
+    v5[5][0] = p_vertex[7][0];
+    v5[6][0] = (0.5 * p_vertex[6][0]) - 0.5;
+    v5[7][0] = (0.5 * p_vertex[7][0]) - 0.5;
+
+    v5[0][2] = p_vertex[2][2];
+    v5[1][2] = p_vertex[3][2];
+    v5[2][2] = p_vertex[2][2] - 1.0;
+    v5[3][2] = p_vertex[3][2] - 1.0;
+    v5[4][2] = p_vertex[6][2];
+    v5[5][2] = p_vertex[7][2];
+    v5[6][2] = p_vertex[6][2] - 1.0;
+    v5[7][2] = p_vertex[7][2] - 1.0;
+
+    v2 = reduct(v2);
+    v3 = reduct(v3);
+    v4 = reduct(v4);
+    v5 = reduct(v5);
+
+    switch (newBranchAxis) {
+      case 0:
+      newBranches.add(new Branch(v3, f2, n2, p_level + 1));
+      newBranches.add(new Branch(v2, f2, n2, p_level + 1));
+      newBranches.add(new Branch(v4, f2, n2, p_level + 1));
+      break;
+
+      case 1:
+      newBranches.add(new Branch(v3, f2, n2, p_level + 1));
+      newBranches.add(new Branch(v5, f2, n2, p_level + 1));
+      newBranches.add(new Branch(v4, f2, n2, p_level + 1));
+      break;
+
+      case 2:
+      newBranches.add(new Branch(v3, f2, n2, p_level + 1));
+      newBranches.add(new Branch(v2, f2, n2, p_level + 1));
+      newBranches.add(new Branch(v4, f2, n2, p_level + 1));
+      newBranches.add(new Branch(v5, f2, n2, p_level + 1));
+      break;
+
+      default:
+      newBranches.add(new Branch(v3, f2, n2, p_level + 1));
+      newBranches.add(new Branch(v2, f2, n2, p_level + 1));
+      newBranches.add(new Branch(v5, f2, n2, p_level + 1));
+    }
+
+    for (Branch newBranch : newBranches) {
+      addBranche(newBranch);
+      if (p_level < tree_level) {
+        subDivide(newBranch);
+      }
+    }
+
+    //set leaf
+  }
+
+  float color[] = { 139.0f/255.0f, 69.0f/255.0f, 19.0f/255.0f, 1.0f };
+	float silver[] = { 139.0f/255.0f, 69.0f/255.0f, 19.0f/255.0f, 1.0f };
+
+  public void draw(GLAutoDrawable drawable) {
+    GL2 gl = drawable.getGL().getGL2();
+    GLUT glut = new GLUT();
+
+    //draw root
+    gl.glMaterialfv(GL2.GL_FRONT_AND_BACK, GL2.GL_AMBIENT_AND_DIFFUSE, color, 0);
+    gl.glMaterialfv(GL2.GL_FRONT_AND_BACK, GL2.GL_SPECULAR, silver, 0);
+    gl.glTranslated(0.0, -0.4, 0.0);
+    glut.glutSolidIcosahedron();
+
+    if (branch != null) {
+      branch.display(drawable);
+    }
+
+    //glut.glutSolidCylinder(5, 5, 5, 5);
+
+
+    for (int i = 0; i < branches.size() ; i++ ) {
+      Branch branch = branches.get(i);
+      branch.display(drawable);
+    }
+
+    /*for (int i = leaves.size() - 1; i > -1 ; i-- ) {
+      Leaf leaf = leaves.get(i);
+      leaf.display();
+    }*/
+  }
+}

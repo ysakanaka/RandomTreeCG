@@ -1,0 +1,438 @@
+CgCanvas.java:7: エラー: パッケージcom.jogamp.openglは存在しません
+import com.jogamp.opengl.GLAutoDrawable;
+                        ^
+CgCanvas.java:8: エラー: パッケージcom.jogamp.opengl.awtは存在しません
+import com.jogamp.opengl.awt.GLCanvas;
+                            ^
+CgCanvas.java:13: エラー: シンボルを見つけられません
+	static GLAutoDrawable drawable = null;
+	       ^
+  シンボル:   クラス GLAutoDrawable
+  場所: クラス CgCanvas
+CgCanvas.java:14: エラー: シンボルを見つけられません
+	GLCanvas glc; 
+	^
+  シンボル:   クラス GLCanvas
+  場所: クラス CgCanvas
+CgDrawer.java:6: エラー: パッケージcom.jogamp.openglは存在しません
+import com.jogamp.opengl.GL2;
+                        ^
+CgDrawer.java:7: エラー: パッケージcom.jogamp.openglは存在しません
+import com.jogamp.opengl.GL;
+                        ^
+CgDrawer.java:8: エラー: パッケージcom.jogamp.openglは存在しません
+import com.jogamp.opengl.GLEventListener;
+                        ^
+CgDrawer.java:9: エラー: パッケージcom.jogamp.openglは存在しません
+import com.jogamp.opengl.GLAutoDrawable;
+                        ^
+CgDrawer.java:10: エラー: パッケージcom.jogamp.opengl.glu.gl2は存在しません
+import com.jogamp.opengl.glu.gl2.GLUgl2;
+                                ^
+CgDrawer.java:11: エラー: パッケージcom.jogamp.opengl.util.gl2は存在しません
+import com.jogamp.opengl.util.gl2.GLUT;
+                                 ^
+CgDrawer.java:14: エラー: シンボルを見つけられません
+public class CgDrawer implements GLEventListener {
+                                 ^
+  シンボル: クラス GLEventListener
+CgCanvas.java:31: エラー: シンボルを見つけられません
+	public GLCanvas getGLCanvas() {
+	       ^
+  シンボル:   クラス GLCanvas
+  場所: クラス CgCanvas
+CgDrawer.java:15: エラー: シンボルを見つけられません
+	GLAutoDrawable glAD;
+	^
+  シンボル:   クラス GLAutoDrawable
+  場所: クラス CgDrawer
+CgDrawer.java:26: エラー: シンボルを見つけられません
+    public void init(GLAutoDrawable drawable) {
+                     ^
+  シンボル:   クラス GLAutoDrawable
+  場所: クラス CgDrawer
+CgDrawer.java:57: エラー: シンボルを見つけられません
+    public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {
+                        ^
+  シンボル:   クラス GLAutoDrawable
+  場所: クラス CgDrawer
+CgDrawer.java:84: エラー: シンボルを見つけられません
+    public void display(GLAutoDrawable drawable) {
+                        ^
+  シンボル:   クラス GLAutoDrawable
+  場所: クラス CgDrawer
+CgDrawer.java:93: エラー: シンボルを見つけられません
+    	GLAutoDrawable drawable, boolean modeChanged, boolean deviceChanged) {
+    	^
+  シンボル:   クラス GLAutoDrawable
+  場所: クラス CgDrawer
+CgDrawer.java:102: エラー: シンボルを見つけられません
+	public void draw(GLAutoDrawable drawable) {
+	                 ^
+  シンボル:   クラス GLAutoDrawable
+  場所: クラス CgDrawer
+CgDrawer.java:123: エラー: シンボルを見つけられません
+	public GLAutoDrawable getGLAutoDrawable() {
+	       ^
+  シンボル:   クラス GLAutoDrawable
+  場所: クラス CgDrawer
+CgDrawer.java:128: エラー: シンボルを見つけられません
+	public void dispose(GLAutoDrawable arg0) {
+	                    ^
+  シンボル:   クラス GLAutoDrawable
+  場所: クラス CgDrawer
+CgMain.java:9: エラー: パッケージcom.jogamp.opengl.awtは存在しません
+import com.jogamp.opengl.awt.GLCanvas;
+                            ^
+CgMain.java:10: エラー: パッケージcom.jogamp.opengl.utilは存在しません
+import com.jogamp.opengl.util.Animator;
+                             ^
+CgMain.java:16: エラー: シンボルを見つけられません
+	static Animator animator;
+	       ^
+  シンボル:   クラス Animator
+  場所: クラス CgMain
+CgMouseListener.java:7: エラー: パッケージcom.jogamp.opengl.utilは存在しません
+import com.jogamp.opengl.util.Animator;
+                             ^
+CgMouseListener.java:12: エラー: シンボルを見つけられません
+	Animator animator;	
+	^
+  シンボル:   クラス Animator
+  場所: クラス CgMouseListener
+CgMouseListener.java:14: エラー: シンボルを見つけられません
+	public CgMouseListener(CgCanvas c, Animator a) {
+	                                   ^
+  シンボル:   クラス Animator
+  場所: クラス CgMouseListener
+MyCar.java:5: エラー: パッケージcom.jogamp.openglは存在しません
+import com.jogamp.opengl.GL2;
+                        ^
+MyCar.java:6: エラー: パッケージcom.jogamp.openglは存在しません
+import com.jogamp.opengl.GLAutoDrawable;
+                        ^
+MyCar.java:7: エラー: パッケージcom.jogamp.opengl.util.gl2は存在しません
+import com.jogamp.opengl.util.gl2.GLUT;
+                                 ^
+MyCar.java:117: エラー: シンボルを見つけられません
+	public void draw(GLAutoDrawable drawable) {
+	                 ^
+  シンボル:   クラス GLAutoDrawable
+  場所: クラス MyCar
+MyFlag.java:5: エラー: パッケージcom.jogamp.openglは存在しません
+import com.jogamp.opengl.GL2;
+                        ^
+MyFlag.java:6: エラー: パッケージcom.jogamp.openglは存在しません
+import com.jogamp.opengl.GLAutoDrawable;
+                        ^
+MyFlag.java:58: エラー: シンボルを見つけられません
+	public void draw(GLAutoDrawable drawable) {
+	                 ^
+  シンボル:   クラス GLAutoDrawable
+  場所: クラス MyFlag
+MyScene.java:5: エラー: パッケージcom.jogamp.openglは存在しません
+import com.jogamp.opengl.GL2;
+                        ^
+MyScene.java:6: エラー: パッケージcom.jogamp.openglは存在しません
+import com.jogamp.opengl.GLAutoDrawable;
+                        ^
+MyScene.java:34: エラー: シンボルを見つけられません
+	public static void draw(GLAutoDrawable drawable) {
+	                        ^
+  シンボル:   クラス GLAutoDrawable
+  場所: クラス MyScene
+CgCanvas.java:25: エラー: シンボルを見つけられません
+		glc = new GLCanvas();
+		          ^
+  シンボル:   クラス GLCanvas
+  場所: クラス CgCanvas
+CgCanvas.java:37: エラー: シンボルを見つけられません
+		GLAutoDrawable  glAD = drawer.getGLAutoDrawable();
+		^
+  シンボル:   クラス GLAutoDrawable
+  場所: クラス CgCanvas
+CgDrawer.java:31: エラー: シンボルを見つけられません
+        GL2 gl= drawable.getGL().getGL2();
+        ^
+  シンボル:   クラス GL2
+  場所: クラス CgDrawer
+CgDrawer.java:34: エラー: シンボルを見つけられません
+		gl.glEnable(GL.GL_RGBA);
+		            ^
+  シンボル:   変数 GL
+  場所: クラス CgDrawer
+CgDrawer.java:35: エラー: シンボルを見つけられません
+		gl.glEnable(GL2.GL_DEPTH);
+		            ^
+  シンボル:   変数 GL2
+  場所: クラス CgDrawer
+CgDrawer.java:36: エラー: シンボルを見つけられません
+        gl.glEnable(GL2.GL_DOUBLE);
+                    ^
+  シンボル:   変数 GL2
+  場所: クラス CgDrawer
+CgDrawer.java:37: エラー: シンボルを見つけられません
+        gl.glEnable(GL.GL_DEPTH_TEST);
+                    ^
+  シンボル:   変数 GL
+  場所: クラス CgDrawer
+CgDrawer.java:38: エラー: シンボルを見つけられません
+        gl.glEnable(GL2.GL_NORMALIZE);
+                    ^
+  シンボル:   変数 GL2
+  場所: クラス CgDrawer
+CgDrawer.java:39: エラー: シンボルを見つけられません
+        gl.glEnable(GL.GL_CULL_FACE);
+                    ^
+  シンボル:   変数 GL
+  場所: クラス CgDrawer
+CgDrawer.java:40: エラー: シンボルを見つけられません
+        gl.glCullFace(GL.GL_BACK);
+                      ^
+  シンボル:   変数 GL
+  場所: クラス CgDrawer
+CgDrawer.java:43: エラー: シンボルを見つけられません
+        gl.glEnable(GL2.GL_LIGHTING);
+                    ^
+  シンボル:   変数 GL2
+  場所: クラス CgDrawer
+CgDrawer.java:44: エラー: シンボルを見つけられません
+        gl.glEnable(GL2.GL_LIGHT0);
+                    ^
+  シンボル:   変数 GL2
+  場所: クラス CgDrawer
+CgDrawer.java:45: エラー: シンボルを見つけられません
+        gl.glEnable(GL2.GL_LIGHT1);
+                    ^
+  シンボル:   変数 GL2
+  場所: クラス CgDrawer
+CgDrawer.java:46: エラー: シンボルを見つけられません
+        gl.glLightfv(GL2.GL_LIGHT0, GL2.GL_DIFFUSE, silver, 0);
+                     ^
+  シンボル:   変数 GL2
+  場所: クラス CgDrawer
+CgDrawer.java:46: エラー: シンボルを見つけられません
+        gl.glLightfv(GL2.GL_LIGHT0, GL2.GL_DIFFUSE, silver, 0);
+                                    ^
+  シンボル:   変数 GL2
+  場所: クラス CgDrawer
+CgDrawer.java:47: エラー: シンボルを見つけられません
+        gl.glLightfv(GL2.GL_LIGHT1, GL2.GL_DIFFUSE, silver, 0);
+                     ^
+  シンボル:   変数 GL2
+  場所: クラス CgDrawer
+CgDrawer.java:47: エラー: シンボルを見つけられません
+        gl.glLightfv(GL2.GL_LIGHT1, GL2.GL_DIFFUSE, silver, 0);
+                                    ^
+  シンボル:   変数 GL2
+  場所: クラス CgDrawer
+CgDrawer.java:58: エラー: シンボルを見つけられません
+        GL2 gl = drawable.getGL().getGL2();
+        ^
+  シンボル:   クラス GL2
+  場所: クラス CgDrawer
+CgDrawer.java:59: エラー: シンボルを見つけられません
+        GLUgl2 glu = new GLUgl2();
+        ^
+  シンボル:   クラス GLUgl2
+  場所: クラス CgDrawer
+CgDrawer.java:59: エラー: シンボルを見つけられません
+        GLUgl2 glu = new GLUgl2();
+                         ^
+  シンボル:   クラス GLUgl2
+  場所: クラス CgDrawer
+CgDrawer.java:69: エラー: シンボルを見つけられません
+        gl.glMatrixMode(GL2.GL_PROJECTION);
+                        ^
+  シンボル:   変数 GL2
+  場所: クラス CgDrawer
+CgDrawer.java:74: エラー: シンボルを見つけられません
+        gl.glMatrixMode(GL2.GL_MODELVIEW);
+                        ^
+  シンボル:   変数 GL2
+  場所: クラス CgDrawer
+CgDrawer.java:103: エラー: シンボルを見つけられません
+		 GL2 gl = drawable.getGL().getGL2();
+		 ^
+  シンボル:   クラス GL2
+  場所: クラス CgDrawer
+CgDrawer.java:104: エラー: シンボルを見つけられません
+		 GLUgl2 glu = new GLUgl2();
+		 ^
+  シンボル:   クラス GLUgl2
+  場所: クラス CgDrawer
+CgDrawer.java:104: エラー: シンボルを見つけられません
+		 GLUgl2 glu = new GLUgl2();
+		                  ^
+  シンボル:   クラス GLUgl2
+  場所: クラス CgDrawer
+CgDrawer.java:107: エラー: シンボルを見つけられません
+		 gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT);
+		            ^
+  シンボル:   変数 GL
+  場所: クラス CgDrawer
+CgDrawer.java:107: エラー: シンボルを見つけられません
+		 gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT);
+		                                     ^
+  シンボル:   変数 GL
+  場所: クラス CgDrawer
+CgDrawer.java:114: エラー: シンボルを見つけられません
+		 gl.glLightfv(GL2.GL_LIGHT0, GL2.GL_POSITION, light0pos, 0);
+		              ^
+  シンボル:   変数 GL2
+  場所: クラス CgDrawer
+CgDrawer.java:114: エラー: シンボルを見つけられません
+		 gl.glLightfv(GL2.GL_LIGHT0, GL2.GL_POSITION, light0pos, 0);
+		                             ^
+  シンボル:   変数 GL2
+  場所: クラス CgDrawer
+CgDrawer.java:115: エラー: シンボルを見つけられません
+		 gl.glLightfv(GL2.GL_LIGHT1, GL2.GL_POSITION, light1pos, 0);
+		              ^
+  シンボル:   変数 GL2
+  場所: クラス CgDrawer
+CgDrawer.java:115: エラー: シンボルを見つけられません
+		 gl.glLightfv(GL2.GL_LIGHT1, GL2.GL_POSITION, light1pos, 0);
+		                             ^
+  シンボル:   変数 GL2
+  場所: クラス CgDrawer
+CgDrawer.java:127: エラー: メソッドはスーパータイプのメソッドをオーバーライドまたは実装しません
+	@Override
+	^
+CgMain.java:26: エラー: シンボルを見つけられません
+		GLCanvas glc = canvas.getGLCanvas();
+		^
+  シンボル:   クラス GLCanvas
+  場所: クラス CgMain
+CgMain.java:27: エラー: シンボルを見つけられません
+		animator = new Animator(glc);
+		               ^
+  シンボル:   クラス Animator
+  場所: クラス CgMain
+MyCar.java:118: エラー: シンボルを見つけられません
+		GL2 gl = drawable.getGL().getGL2();
+		^
+  シンボル:   クラス GL2
+  場所: クラス MyCar
+MyCar.java:119: エラー: シンボルを見つけられません
+		GLUT glut = new GLUT();
+		^
+  シンボル:   クラス GLUT
+  場所: クラス MyCar
+MyCar.java:119: エラー: シンボルを見つけられません
+		GLUT glut = new GLUT();
+		                ^
+  シンボル:   クラス GLUT
+  場所: クラス MyCar
+MyCar.java:126: エラー: シンボルを見つけられません
+		gl.glMaterialfv(GL2.GL_FRONT_AND_BACK, GL2.GL_AMBIENT_AND_DIFFUSE, color, 0);
+		                ^
+  シンボル:   変数 GL2
+  場所: クラス MyCar
+MyCar.java:126: エラー: シンボルを見つけられません
+		gl.glMaterialfv(GL2.GL_FRONT_AND_BACK, GL2.GL_AMBIENT_AND_DIFFUSE, color, 0);
+		                                       ^
+  シンボル:   変数 GL2
+  場所: クラス MyCar
+MyCar.java:127: エラー: シンボルを見つけられません
+		gl.glMaterialfv(GL2.GL_FRONT_AND_BACK, GL2.GL_SPECULAR, silver, 0);
+		                ^
+  シンボル:   変数 GL2
+  場所: クラス MyCar
+MyCar.java:127: エラー: シンボルを見つけられません
+		gl.glMaterialfv(GL2.GL_FRONT_AND_BACK, GL2.GL_SPECULAR, silver, 0);
+		                                       ^
+  シンボル:   変数 GL2
+  場所: クラス MyCar
+MyCar.java:131: エラー: シンボルを見つけられません
+			gl.glBegin(GL2.GL_POLYGON);
+			           ^
+  シンボル:   変数 GL2
+  場所: クラス MyCar
+MyCar.java:141: エラー: シンボルを見つけられません
+			gl.glBegin(GL2.GL_POLYGON);
+			           ^
+  シンボル:   変数 GL2
+  場所: クラス MyCar
+MyCar.java:150: エラー: シンボルを見つけられません
+		gl.glMaterialfv(GL2.GL_FRONT_AND_BACK, GL2.GL_AMBIENT_AND_DIFFUSE, silver, 0);
+		                ^
+  シンボル:   変数 GL2
+  場所: クラス MyCar
+MyCar.java:150: エラー: シンボルを見つけられません
+		gl.glMaterialfv(GL2.GL_FRONT_AND_BACK, GL2.GL_AMBIENT_AND_DIFFUSE, silver, 0);
+		                                       ^
+  シンボル:   変数 GL2
+  場所: クラス MyCar
+MyCar.java:151: エラー: シンボルを見つけられません
+		gl.glMaterialfv(GL2.GL_FRONT_AND_BACK, GL2.GL_SPECULAR, silver, 0);
+		                ^
+  シンボル:   変数 GL2
+  場所: クラス MyCar
+MyCar.java:151: エラー: シンボルを見つけられません
+		gl.glMaterialfv(GL2.GL_FRONT_AND_BACK, GL2.GL_SPECULAR, silver, 0);
+		                                       ^
+  シンボル:   変数 GL2
+  場所: クラス MyCar
+MyFlag.java:59: エラー: シンボルを見つけられません
+		GL2 gl = drawable.getGL().getGL2();
+		^
+  シンボル:   クラス GL2
+  場所: クラス MyFlag
+MyFlag.java:62: エラー: シンボルを見つけられません
+		gl.glMaterialfv(GL2.GL_FRONT_AND_BACK, GL2.GL_AMBIENT_AND_DIFFUSE, blue, 0);
+		                ^
+  シンボル:   変数 GL2
+  場所: クラス MyFlag
+MyFlag.java:62: エラー: シンボルを見つけられません
+		gl.glMaterialfv(GL2.GL_FRONT_AND_BACK, GL2.GL_AMBIENT_AND_DIFFUSE, blue, 0);
+		                                       ^
+  シンボル:   変数 GL2
+  場所: クラス MyFlag
+MyFlag.java:63: エラー: シンボルを見つけられません
+		gl.glMaterialfv(GL2.GL_FRONT_AND_BACK, GL2.GL_SPECULAR, silver, 0);
+		                ^
+  シンボル:   変数 GL2
+  場所: クラス MyFlag
+MyFlag.java:63: エラー: シンボルを見つけられません
+		gl.glMaterialfv(GL2.GL_FRONT_AND_BACK, GL2.GL_SPECULAR, silver, 0);
+		                                       ^
+  シンボル:   変数 GL2
+  場所: クラス MyFlag
+MyFlag.java:67: エラー: シンボルを見つけられません
+			gl.glBegin(GL2.GL_POLYGON);
+			           ^
+  シンボル:   変数 GL2
+  場所: クラス MyFlag
+MyFlag.java:76: エラー: シンボルを見つけられません
+		gl.glMaterialfv(GL2.GL_FRONT_AND_BACK, GL2.GL_AMBIENT_AND_DIFFUSE, red, 0);
+		                ^
+  シンボル:   変数 GL2
+  場所: クラス MyFlag
+MyFlag.java:76: エラー: シンボルを見つけられません
+		gl.glMaterialfv(GL2.GL_FRONT_AND_BACK, GL2.GL_AMBIENT_AND_DIFFUSE, red, 0);
+		                                       ^
+  シンボル:   変数 GL2
+  場所: クラス MyFlag
+MyFlag.java:79: エラー: シンボルを見つけられません
+		gl.glBegin(GL2.GL_POLYGON);
+		           ^
+  シンボル:   変数 GL2
+  場所: クラス MyFlag
+MyScene.java:37: エラー: シンボルを見つけられません
+		GL2 gl = drawable.getGL().getGL2();
+		^
+  シンボル:   クラス GL2
+  場所: クラス MyScene
+MyScene.java:38: エラー: シンボルを見つけられません
+		 gl.glLightModeli(GL2.GL_LIGHT_MODEL_TWO_SIDE, GL2.GL_TRUE); 
+		                  ^
+  シンボル:   変数 GL2
+  場所: クラス MyScene
+MyScene.java:38: エラー: シンボルを見つけられません
+		 gl.glLightModeli(GL2.GL_LIGHT_MODEL_TWO_SIDE, GL2.GL_TRUE); 
+		                                               ^
+  シンボル:   変数 GL2
+  場所: クラス MyScene
+エラー95個
+エラー: メイン・クラスCgMainが見つからなかったかロードできませんでした

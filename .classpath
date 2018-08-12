@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path=""/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/itot/ocha/cg/jogl2.3/jogl-jar/gluegen-rt.jar"/>
+	<classpathentry kind="lib" path="C:/itot/ocha/cg/jogl2.3/jogl-jar/gluegen-rt-natives-windows-i586.jar"/>
+	<classpathentry kind="lib" path="C:/itot/ocha/cg/jogl2.3/jogl-jar/jogl-all.jar"/>
+	<classpathentry kind="lib" path="C:/itot/ocha/cg/jogl2.3/jogl-jar/jogl-all-natives-windows-i586.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jogl2">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:/itot/ocha/cg/jogl2.3/jogl-winlib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path=""/>
+</classpath>
