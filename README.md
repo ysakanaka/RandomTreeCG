@@ -8,10 +8,20 @@ You can run this system by this command on Mac OS.
 ```
 ./jogl.sh
 ```
-
 ### Prerequisites
 
 Java
+
+## How to use
+|Key| Operation|
+|-----|-----|
+|T|Generate new tree at the view point|
+|G|Grow trees|
+|Mouse drag|Move xy|
+|Mouse drag + Ctrl|Move z|
+|D|Drop frowers around the view point|
+|F|Recover flowers|
+|Q|Quit|
 
 ## Built With
 
