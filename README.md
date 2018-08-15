@@ -30,4 +30,4 @@ Java
 
 ## Acknowledgments
 
-* This application based on the codes used in [the CG class](http://itolab.is.ocha.ac.jp/~itot/teaching/cg/index.html) by Professor Itoh Takayuki.
+* This application based on the codes used in [the CG class](http://itolab.is.ocha.ac.jp/~itot/teaching/cg/index.html) by Professor Takayuki Itoh.
